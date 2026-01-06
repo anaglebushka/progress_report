@@ -1,0 +1,13 @@
+FROM python:3.11-slim(last pushed 8 hours ago)
+
+WORKDIR/ app
+
+#copy app files to directory 
+COPY .  .
+
+#install dependencies 
+RUN pip install --no-cache-dir -r requiremnents.txt
+
+EXPOSE 8501 
+
+CMD ['streamlit', "run", 'app.py',"--server.port=8501", "--server.adress-0.0.0.0"]
